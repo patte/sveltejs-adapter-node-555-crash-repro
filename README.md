@@ -26,9 +26,9 @@ That single import is the entire trigger. A `hooks.server.ts` with **no imports*
 boots fine on 5.5.5; adding the `$env/dynamic/private` import makes it crash.
 An `init` / `ServerInit` hook is **not** required.
 
-This is why the bug is easy to miss in a bare scaffold but hits essentially every
-real app: importing `$env/dynamic/private` (or any module the bundler places in
-the shared server chunk) from `hooks.server` is extremely common.
+This is why the bug is easy to miss in a bare scaffold but hits may 
+real apps: importing `$env/dynamic/private` (or any module the bundler places in
+the shared server chunk) from `hooks.server` is very common.
 
 ## Reproduce
 
@@ -84,3 +84,7 @@ Pin `@sveltejs/adapter-node` to `5.5.4`.
 
 See `package.json` / `pnpm-lock.yaml`. Reproduced with Node 24, but the deadlock
 is in module evaluation and not Node-version specific.
+
+## Transparency
+
+Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
